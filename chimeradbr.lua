@@ -142,6 +142,35 @@ local Window = Rayfield:CreateWindow({
  })
 --  Survivor General Cheats
  local SurvCheats = Survivor:CreateSection("Cheats")
+ local InstantGen = Survivor:CreateToggle({
+    Name = "Instant Generator",
+    CurrentValue = false,
+    Callback = function(instantgenfix)
+        local genLoop = false
+        if instantgenfix then
+            genLoop = true
+            if genLoop == true then
+                while wait() do
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator8")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator7")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator6")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator5")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator4")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator3")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator2")
+                    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator1")
+                end
+        else
+            genLoop = false
+        end
+    end,
+ })
+ local UnlockGate = Survivor:CreateButton({
+    Name = "Unlockable Exits",
+    Callback = function()
+        game.Workspace["Match Values"]["Generators Repaired"] = 5
+    end,
+ })
  local Points = Survivor:CreateButton({
     Name = "Get Points (May Lag)",
     Callback = function()
@@ -151,6 +180,7 @@ local Window = Rayfield:CreateWindow({
         end
     end,
  })
+
 
 
 
@@ -191,7 +221,7 @@ local Window = Rayfield:CreateWindow({
 --  Creation of Options Tab
  local Options = Window:CreateTab("Options")
  local Hide = Options:CreateLabel("Press RightShift to hide UI.")
- local Close = Options:CreateButton({
+ local Close = Windows:CreateButton({
     Name = "Close Chimera DBR",
     Callback = function()
         Rayfield:Destroy()

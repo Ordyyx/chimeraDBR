@@ -160,6 +160,7 @@ local Window = Rayfield:CreateWindow({
                     game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator2")
                     game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("SendSkillCheck"):FireServer("Great", "Generator1")
                 end
+            end
         else
             genLoop = false
         end
@@ -168,7 +169,7 @@ local Window = Rayfield:CreateWindow({
  local UnlockGate = Survivor:CreateButton({
     Name = "Unlockable Exits",
     Callback = function()
-        game.Workspace["Match Values"]["Generators Repaired"] = 5
+        game.Workspace.MatchValues.GeneratorsRepaired = 5
     end,
  })
  local Points = Survivor:CreateButton({
@@ -221,7 +222,7 @@ local Window = Rayfield:CreateWindow({
 --  Creation of Options Tab
  local Options = Window:CreateTab("Options")
  local Hide = Options:CreateLabel("Press RightShift to hide UI.")
- local Close = Windows:CreateButton({
+ local Close = Options:CreateButton({
     Name = "Close Chimera DBR",
     Callback = function()
         Rayfield:Destroy()
